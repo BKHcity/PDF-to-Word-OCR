@@ -50,7 +50,7 @@
 ### 2️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/phuduong24h/do-an-tn.git
+git clone https://github.com/BKHcity/Research-on-OCR-Methods-for-Converting-PDF-to-Word-Documents
 cd handwriting-Project
 ```
 
@@ -396,7 +396,7 @@ MIT License - See LICENSE file
 
 ## 👨‍💼 Author
 
-**Phạm Hu Dương** - phuduong24h@gmail.com
+**Bùi Kim Hải** - buikimhai2.4h@gmail.com
 
 ---
 
@@ -411,10 +411,11 @@ MIT License - See LICENSE file
 
 ## 💬 Support
 
-- 📧 Email: phuduong24h@gmail.com
+- 📧 Email: buikimhai2.4@gmail.com
 - 🐛 Issues: GitHub Issues
 - 💡 Discussions: GitHub Discussions
 
 ---
 
 **Made with ❤️ for Vietnamese OCR**
+**Mong sau tham khảo được**
