@@ -1,0 +1,230 @@
+# Configuration file for Handwriting Recognition System
+
+# ===== Dataset Configuration =====
+dataset:
+  # Dataset type: 'vnondb' (Vietnamese Online Handwriting Database)
+  type: "vnondb"
+
+  # Root directory of dataset
+  root_dir: "data/VNOnDB_Line"
+
+  # Image parameters
+  img_height: 32
+  max_width: 512
+
+  # Data split files
+  train_file: "train_set.txt"
+  validation_file: "validation_set.txt"
+  test_file: "test_set.txt"
+
+# ===== Character Configuration =====
+chars:
+  # Character set - lowercase letters, digits, space
+  charset: "abcdefghijklmnopqrstuvwxyz0123456789 "
+  # Add blank token for CTC
+  vocab:
+    [
+      "<BLANK>",
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      " ",
+    ]
+  blank_idx: 0
+
+# ===== Model Configuration =====
+model:
+  # Model architecture: 'crnn' (Convolutional Recurrent Neural Network)
+  type: "crnn"
+
+  # Input channels (1 for grayscale, 3 for RGB)
+  in_channels: 1
+
+  # RNN hidden size
+  rnn_hidden: 256
+
+  # Number of RNN layers
+  rnn_layers: 2
+
+  # Bidirectional RNN
+  bidirectional: true
+
+# ===== Training Configuration =====
+training:
+  # Number of epochs
+  epochs: 50
+
+  # Batch size
+  batch_size: 32
+
+  # Learning rate
+  learning_rate: 1.0e-4
+
+  # Optimizer: 'adam' or 'sgd'
+  optimizer: "adam"
+
+  # Learning rate scheduler: 'none', 'step', 'cosine'
+  scheduler: "step"
+
+  # Learning rate decay (for step scheduler)
+  lr_decay_step: 10
+  lr_decay_gamma: 0.5
+
+  # Gradient clipping
+  gradient_clip: 5.0
+
+  # Number of workers for data loading
+  num_workers: 4
+
+  # Pin memory for faster GPU loading
+  pin_memory: true
+
+  # Loss function: 'ctc' (Connectionist Temporal Classification)
+  loss: "ctc"
+
+  # Devices
+  device: "cuda" # 'cuda' or 'cpu'
+  mixed_precision: false # Use mixed precision training (FP16)
+
+# ===== Validation Configuration =====
+validation:
+  # Validation frequency (validate every N epochs)
+  frequency: 1
+
+  # Validation metrics: 'cer', 'wer', 'both'
+  metrics: "both"
+
+  # Early stopping
+  early_stopping: true
+  early_stopping_patience: 10
+
+# ===== Model Checkpoint Configuration =====
+checkpoint:
+  # Directory to save checkpoints
+  save_dir: "checkpoints"
+
+  # Save best model
+  save_best: true
+
+  # Best model filename
+  best_model_name: "crnn_best.pth"
+
+  # Save latest model
+  save_latest: true
+  latest_model_name: "crnn_latest.pth"
+
+  # Save frequency (save every N epochs)
+  save_frequency: 1
+
+# ===== Inference Configuration =====
+inference:
+  # Model path for inference
+  model_path: "crnn_best.pth"
+
+  # Beam search width (0 = greedy decoding)
+  beam_width: 0
+
+  # Test Time Augmentation (TTA)
+  tta: false
+
+  # TTA heights to try
+  tta_heights: [24, 32, 48]
+
+  # Confidence threshold for predictions
+  confidence_threshold: 0.0
+
+# ===== Preprocessing Configuration =====
+preprocessing:
+  # Image denoise
+  denoise: true
+  denoise_h: 10
+
+  # CLAHE (Contrast Limited Adaptive Histogram Equalization)
+  clahe: true
+  clahe_clip_limit: 2.0
+  clahe_tile_grid_size: [8, 8]
+
+  # Deskew
+  deskew: true
+
+  # Adaptive binarization
+  binarize: false
+
+# ===== Augmentation Configuration =====
+augmentation:
+  # Enable augmentation during training
+  enabled: true
+
+  # Elastic deformation
+  elastic_alpha: 30
+  elastic_sigma: 4
+  elastic_probability: 0.3
+
+  # Gaussian blur
+  blur_probability: 0.2
+  blur_kernel: 3
+
+  # Noise
+  noise_probability: 0.2
+  noise_std: 10
+
+  # Rotation
+  rotation_range: 6
+
+# ===== Logging Configuration =====
+logging:
+  # Logging level: 'debug', 'info', 'warning', 'error'
+  level: "info"
+
+  # Log directory
+  log_dir: "logs"
+
+  # TensorBoard logging
+  tensorboard: true
+  tensorboard_dir: "runs"
+
+# ===== Test Configuration =====
+testing:
+  # Test data directory
+  test_dir: "data/VNOnDB_Line"
+
+  # Save test results to file
+  save_results: true
+  results_file: "test_results.txt"
+
+  # Visualize predictions
+  visualize: false
+  visualization_dir: "visualizations"

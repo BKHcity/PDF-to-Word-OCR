@@ -1,0 +1,144 @@
+# ============================================================================
+# PYTHON & VIRTUAL ENVIRONMENT
+# ============================================================================
+venv/
+env/
+ENV/
+.venv
+*.py[cod]
+__pycache__/
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ============================================================================
+# IDE & EDITOR
+# ============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# JUPYTER & NOTEBOOK
+# ============================================================================
+.ipynb_checkpoints
+*.ipynb
+
+# ============================================================================
+# LARGE DATA FILES (Người dùng cần download riêng)
+# ============================================================================
+# Training data raw
+data/raw/**/*
+data/VNOnDB_Line/InkData_line/**/*
+data/VNOnDB_Paragraph/InkData_paragraph/**/*
+
+# Large ZIP files (người dùng download riêng)
+*.zip
+data/**/*.zip
+
+# Converted images (người dùng tự convert từ raw data)
+data/VNOnDB_Line/images/**/*
+data/VNOnDB_Paragraph/images/**/*
+data/synthetic_test/**/*
+data/vietnamese_training/**/*
+
+# NHƯNG GIỮ lại:
+# - data/synthetic_100k/  (nếu nhẹ và cần cho training)
+# - data/unified/         (nếu là config/metadata)
+!data/synthetic_100k/
+!data/unified/
+!data/**/*.yaml
+!data/**/*.json
+!data/**/*.txt
+!data/**/README.md
+!data/**/labels.txt
+
+# ============================================================================
+# TRAINED MODELS (Người dùng có thể download từ releases)
+# ============================================================================
+# Giữ lại CRNN weights (nhỏ, cần thiết)
+!crnn_best.pth
+!crnn_best_compat.pth
+!crnn_final.pth
+!crnn_vietnamese_simple.pth
+!crnn_vnondb.pth
+
+# Nhưng ignore intermediate/cache models
+*.pth~
+*.pth.bak
+*.safetensors
+
+# TrOCR & other large models (người dùng download khi chạy app)
+models/trocr_vn_2k/**/*
+models/trocr_vn_quick/**/*
+!models/**/README.md
+!models/**/*.yaml
+
+# ============================================================================
+# OUTPUTS & LOGS
+# ============================================================================
+outputs/
+logs/
+runs/
+report/
+reports/
+checkpoints/
+visualizations/
+*.log
+training_log.txt
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+*.tmp
+*.bak
+*.cache
+.cache/
+temp/
+tmp/
+*.temp
+
+# ============================================================================
+# OS FILES
+# ============================================================================
+.DS_Store
+Thumbs.db
+*.lnk
+.directory
+
+# ============================================================================
+# HANDOCR (Local debug only)
+# ============================================================================
+# Có thể ignore nếu chỉ để debug
+# handocr/
+
+# ============================================================================
+# GIT
+# ============================================================================
+.git/
+.gitkeep
